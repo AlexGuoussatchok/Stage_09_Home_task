@@ -43,7 +43,7 @@
 # v 2.0
 
 def user_input():
-    num = int(input("Please, enter a number: "))
+    num = int(input("Please, enter a number: ")) # insted better convert to list num = list(input(...)
     num *= -1 if num < 0 else 1  # if a number < 0 entered - we still will be able to compare digits
     return num
 
