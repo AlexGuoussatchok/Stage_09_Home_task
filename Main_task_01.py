@@ -1,41 +1,44 @@
-def numm_def():
-    numm = list(input("Please input a number for a sequence check: "))
-    if len(numm) < 2:
+def num_def():
+    num = int(input("Please input a number for a sequence check: "))
+    if num < 10:
         print("Not enough digits for sequence, input a number of at least 2 digits")
     else:
-        return numm
+        return num
+
+def list_1_creat(num):  # --> crate iterable object
+    ls = []
+    while num > 10:
+        ls.append(num % 10)
+        num = num // 10
+    else:
+        ls.append(num)
+    return ls
+
+def main():
+    num = num_def()
+    ls = list_1_creat(num)
+    print(ls)
+    i = len(ls)
+    print(i)
+    if ls[i - 1] > ls[i-1 - 1]:
+        print(ls[i - 1], ls[i - 1- 1])
+        while i >= 0:
+            while ls[i - 1] > ls[i - 1 - 1]:
+                result = "ok"
+                i -= 1
+                print(i)
+                print(result)
+    elif ls[i - 1] < ls[i-1 - 1]:
+        print(ls[i - 1], ls[i - 1- 1])
+        while i >= 0:
+            while ls[i - 1] < ls[i - 1 - 1]:
+                result = "ok"
+                i -= 1
+                print(i)
+                print(result)
+    else:
+        result = "not ok"
+        print(result)
 
 
-
-numm = numm_def()
-print(numm)
-# for index in numm:
-#     print(f"for index in numm: переменной index поочереди присваивается значение индекса из списка - {numm} - {index}")
-#
-# for index in range(len(numm)):
-#     print(f"for index in range(len(numm)) переменной index присваивается значение индекса - {numm} - {index}")
-#
-# for index in range(len(numm)):
-#     print(f"{index} - {range(len(numm))}")
-#
-# for index in numm:
-#     print(numm[0])
-#
-# for index in range(len(numm)):
-#     print(numm[0])
-result = "not ok"
-
-for index in numm:
-    s = 0
-    print(index[s])
-    s += 1
-    print(index[s])
-    # if index[s] > index[s + 1]:
-    #     result = "ok"
-    #     print(result)
-    # print(index(numm[1]))
-    # if index[0] > index[1]:
-    #     print(result)
-
-# for index in numm:
-#     if index < index
+main()
