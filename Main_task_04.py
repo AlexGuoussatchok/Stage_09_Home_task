@@ -9,13 +9,16 @@ def num_def():
     return num
 
 def list_create(num):  # --> crate iterable object
-    ls = []
-    while num // 10 > 0:
-        ls.append(num % 10)
-        num //= 10
+    if isinstance(num, bool) or not isinstance(num, int) or not (0 <= num):
+        return -1
     else:
-        ls.append(num)
-    return ls
+        ls = []
+        while num // 10 > 0:
+            ls.append(num % 10)
+            num //= 10
+        else:
+            ls.append(num)
+        return ls
 
 def get_max_number(ls):
     max = ls[0]
