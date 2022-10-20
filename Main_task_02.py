@@ -11,18 +11,21 @@ def user_input():
 
 
 def check_palindrome(num):
-    result = "a palindrome"
-    num_2 = num
-    i = 0
-    while i < len(num) - 1:
-        if num[i] == num_2[(i + 1) * -1]:
-            i += 1
-        else:
-            result = "not a palindrome"
-            break
+    if isinstance(num, bool) or not isinstance(num, list):
+        return -1
+    else:
+        result = "a palindrome"
+        num_2 = num
+        i = 0
+        while i < len(num) - 1:
+            if num[i] == num_2[(i + 1) * -1]:
+                i += 1
+            else:
+                result = "not a palindrome"
+                break
 
-            print(result)
-    return result
+                print(result)
+        return result
 
 
 def user_output(result):
