@@ -1,44 +1,66 @@
-def num_def():
-    num = int(input("Please input a number for a sequence check: "))
-    if num < 10:
-        print("Not enough digits for sequence, input a number of at least 2 digits")
-    else:
-        return num
+# Alex Goussatchok
+# QA4822
+# Stage 09
+# Task: Palindrome check
+# v 1.0
 
-def list_1_creat(num):  # --> crate iterable object
-    ls = []
-    while num > 10:
-        ls.append(num % 10)
-        num = num // 10
-    else:
-        ls.append(num)
-    return ls
+def user_input():
+    number = int(input("Please enter a number: "))
+    return number
+
+
+def check_ascending_order(number):
+    if isinstance(number, bool) or not isinstance(number, int):
+        return -1
+
+    while number > 10:
+        if number % 10 <= number // 10 % 10:
+            return False
+        number //= 10
+
+    return True
+
+
+def check_descending_order(number):
+    if isinstance(number, bool) or not isinstance(number, int):
+        return -1
+
+    while number > 10:
+        if number % 10 >= number // 10 % 10:
+            return False
+        number //= 10
+
+    return True
+
+
+def user_output(result, number):
+    msg = f"The number you've entered ({number}) is {result} sequence"
+    return msg
+
 
 def main():
-    num = num_def()
-    ls = list_1_creat(num)
-    print(ls)
-    i = len(ls)
-    print(i)
-    if ls[i - 1] > ls[i-1 - 1]:
-        print(ls[i - 1], ls[i - 1- 1])
-        while i >= 0:
-            while ls[i - 1] > ls[i - 1 - 1]:
-                result = "ok"
-                i -= 1
-                print(i)
-                print(result)
-    elif ls[i - 1] < ls[i-1 - 1]:
-        print(ls[i - 1], ls[i - 1- 1])
-        while i >= 0:
-            while ls[i - 1] < ls[i - 1 - 1]:
-                result = "ok"
-                i -= 1
-                print(i)
-                print(result)
+    number = user_input()
+
+    if number < 10:
+        print(f"The number you've entered ({number}) is too short for a sequence. "
+        f"Please enter a number of 2 digits minimum")
+
     else:
-        result = "not ok"
-        print(result)
+        if number % 10 > number // 10 % 10:
+            if check_ascending_order(number) == True:
+                result = "in ascendant"
+            else:
+                result = "not a"
+
+
+        elif number % 10 < number // 10 % 10:
+            if check_descending_order(number) == True:
+                result = "in descendant"
+            else:
+                result = "not a"
+
+        msg = user_output(result, number)
+        print(msg)
 
 
 main()
